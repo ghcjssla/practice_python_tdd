@@ -9,27 +9,29 @@ class TestCase:
 		self.setUp()
 		method = getattr(self, self.name)
 		method()
+		self.tearDown()
+	def tearDown(self):
+		pass
+	def tearDown(self) :
+		pass
 
 
 class WasRun(TestCase):
-	def testMethod(self):
-		self.WasRun =  1
 	def setUp(self) :
-		self.WasRun = None
-		self.wasSetUp = 1
+		self.log = "setUp"
+	def testMethod(self):
+		self.log = self.log + " testMethod"
+	def tearDown(self) :
+		self.log = self.log + " tearDown"
 	
 
 class TestCaseTest(TestCase) :
 	def setUp(self) :
 		self.test = WasRun("testMethod")
-	def testRunning(self) :
-		self.test.run()
-	      	assert(self.test.WasRun)
-	def testSetUp(self) :
-		self.test.run()
-		assert(self.test.wasSetUp)
-	
-TestCaseTest("testRunning").run()
-TestCaseTest("testSetUp").run()
+	def testTemplateMethod(self) :
+		self.test.run() 
+		assert("setUp testMethod tearDown" == self.test.log)
+
+TestCaseTest("testTemplateMethod").run()
 
 print "is There? test"
