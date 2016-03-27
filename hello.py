@@ -25,4 +25,4 @@ class TestCaseTest(TestCase) :
 	      assert(test.WasRun)
 TestCaseTest("testRunning").run()
 
-print "is There?"
+print "is There? test"
