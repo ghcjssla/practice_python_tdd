@@ -13,9 +13,7 @@ class WasRun(TestCase):
 		TestCase.__init__(self, name)
 	def testMethod(self):
 		self.WasRun =  1
-	def run(self):
-		method = getattr(self, self.name)
-		method()
+	
 
 class TestCaseTest(TestCase) :
 	def testRunning(self) :
